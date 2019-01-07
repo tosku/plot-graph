@@ -1,0 +1,69 @@
+name:                plot-graph
+version:             0.1.0.0
+github:              "tosku/plot-graph"
+license:             GPL-3
+author:              "Thodoris Papakonstantinou"
+maintainer:          "mail@tpapak.com"
+copyright:           "2019 Thodoris Papakonstantinou"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            graphviz interface for adjacency list graphs
+# category:            graph theory
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/tosku/plot-graph#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - graph >= 0.3.0.0
+  - bytestring
+  - aeson-pretty
+  - containers
+  - text
+  - graphviz
+  exposed-modules: PlotAdjacencyListGraph
+
+executables:
+  plot-graph:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - plot-graph
+    - graph >= 0.3.0.0
+    - bytestring
+    - text
+
+tests:
+  plot-graph-tests:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - plot-graph
+    - tesths >= 0.2.0.0
+    - aeson
+    - bytestring
+    - aeson-pretty
+    - containers
+    - text
+    - split
+    - graph >= 0.3.0.0
+    other-modules:
+    - Test.PlotAdjacencyListGraph
