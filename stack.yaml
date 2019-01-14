@@ -40,7 +40,7 @@ packages:
 extra-deps:
 - natural-numbers-0.1.2.0
 - git: git@github.com:tosku/graph
-  commit: ebe8bd5f1d39ddb41eb1e22d65d149132f388f2a
+  commit: 827fc93a4d432bd827ac6969087d6d7e61eda93a
 - git: git@github.com:tosku/tesths
   commit: a2927de94ead1a6f4235cbc202f435a575cac03a
 - Unique-0.4.7.5

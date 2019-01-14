@@ -25,7 +25,7 @@ dependencies:
 library:
   source-dirs: src
   dependencies:
-  - graph >= 0.3.0.0
+  - graph >= 0.3.2.0
   - bytestring
   - aeson-pretty
   - containers
@@ -43,7 +43,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - plot-graph
-    - graph >= 0.3.0.0
+    - graph >= 0.3.2.0
     - bytestring
     - text
 
@@ -64,6 +64,7 @@ tests:
     - containers
     - text
     - split
-    - graph >= 0.3.0.0
+    - graph >= 0.3.2.0
+    - binary >= 0.8.6.0
     other-modules:
     - Test.PlotAdjacencyListGraph

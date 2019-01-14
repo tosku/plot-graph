@@ -3,6 +3,8 @@ module Test.PlotAdjacencyListGraph where
 import Data.Bifunctor
 import Data.List
 
+import qualified Data.Binary as Bin
+
 import TestHS
 
 import qualified Data.Graph.AdjacencyList as AGR
@@ -12,6 +14,7 @@ import PlotAdjacencyListGraph
 ioTests :: [IO Test]
 ioTests = [ testplot1
           , testplot2
+          , test481150
           ]
 
 
@@ -59,4 +62,15 @@ testplot2 = do
   out <- plotGraph graphTest1 fn
   return $ case out == (fn <> ".png") of
               True -> testPassed name "successfuly created testgraph2.png!"
+              False -> testFailed name $ (,) (fn) (show out)
+
+test481150 :: IO Test
+test481150 = do
+  let name = "Plot network 481150"
+  let fn = "test481150"
+  es <- Bin.decodeFile "test/481150.edges"
+  let gr = AGR.graphFromEdges es 
+  out <- plotGraph gr fn
+  return $ case out == (fn <> ".png") of
+              True -> testPassed name "successfuly created test481150.png!"
               False -> testFailed name $ (,) (fn) (show out)
